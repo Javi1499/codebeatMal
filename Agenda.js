@@ -4,6 +4,8 @@ export default class Agenda {
   constructor(tableAgenda) {
     this._tableAgenda = tableAgenda;
     this.alumno = [];
+    this.prueba =0;
+    
 
     this._initTables();
   }
@@ -52,6 +54,21 @@ export default class Agenda {
     return foundAt;
   }
 
+  addAlumnos(alumnos) {
+    let found = this._findAlumnos(alumnos.cuenta);
+
+    if (found >= 0) {
+      Swal.fire({
+        type: "error",
+        title: "Error",
+        text: "el usario ya esta registrado"
+      });
+      return;
+    }
+
+    this._addToTable(alumnos);
+    localStorage.setItem("alumnos", JSON.stringify(this.alumno));
+  }
   addAlumnos(alumnos) {
     let found = this._findAlumnos(alumnos.cuenta);
 

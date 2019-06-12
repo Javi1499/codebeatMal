@@ -8,6 +8,10 @@ export default class Alumnos {
     return this._name;
   }
 
+  get name() {
+    return this._name;
+  }
+
   get cuenta() {
     return this._cuenta;
   }
